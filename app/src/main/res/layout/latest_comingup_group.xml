@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="100"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ccc">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:id="@+id/date"
+            android:textSize="20sp"
+            android:visibility="gone"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="8"/>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_weight="12"
+        android:id="@+id/icon"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:text="Workout"
+        android:layout_gravity="center"
+        android:layout_weight="78"
+        android:id="@+id/type"
+        android:paddingLeft="5dp"
+        android:gravity="center|start"
+        android:textSize="20sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

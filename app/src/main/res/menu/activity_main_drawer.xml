@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/overview"
+            android:icon="@drawable/overview"
+            android:title="Overview" />
+        <item
+            android:id="@+id/mytreatment"
+            android:icon="@drawable/calendarblue"
+            android:title="Daily Activities" />
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/userblue"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/comingup"
+            android:title=""/>
+
+    </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/setting"
+                android:icon="@drawable/settingsblue"
+                android:title="Settings" />
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/logoff"
+                android:title="Logout" />
+        </menu>
+    </item>
+</menu>

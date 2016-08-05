@@ -1,0 +1,894 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.appsriv.holbe.DrashBoardActivity"
+    tools:showIn="@layout/app_bar_dash"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:weightSum="100"
+        android:background="#ccc"
+        android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="45"
+            android:background="@drawable/drashboardbg"
+            android:orientation="vertical"
+            android:weightSum="100">
+            <!--<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="20"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/hamburger"/>
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textColor="#fff"
+                    android:text="Your Dashboard"
+                    android:textSize="20sp"
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="80" />
+
+
+            </LinearLayout>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="45"
+                android:weightSum="100"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:weightSum="100"
+                    android:orientation="vertical"
+                    android:layout_weight="49">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:id="@+id/overalll_compliance"
+                        android:layout_gravity="center"
+                        android:gravity="center|bottom"
+                        android:textColor="#fff"
+                        android:textSize="70sp"
+                        android:layout_weight="70"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:text="Compliance"
+                        android:layout_marginTop="-15dp"
+                        android:layout_gravity="center"
+                        android:gravity="center|top"
+                        android:textColor="#fff"
+                        android:textSize="17sp"
+                        android:layout_weight="20"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <View
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:background="#fff"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:weightSum="100"
+                    android:orientation="vertical"
+                    android:layout_weight="49">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:id="@+id/treatment_compliance"
+                        android:layout_gravity="center"
+                        android:gravity="center|bottom"
+                        android:textColor="#fff"
+                        android:textSize="70sp"
+                        android:layout_weight="70"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:text="Treatments"
+                        android:textColor="#fff"
+                        android:layout_marginTop="-15dp"
+                        android:layout_gravity="center"
+                        android:gravity="center|top"
+                        android:textSize="17sp"
+                        android:layout_weight="20"/>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:weightSum="100"
+                android:orientation="vertical"
+                android:layout_weight="35">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:id="@+id/days_left"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:textSize="25sp"
+                    android:layout_weight="40"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:textColor="#fff"
+                    android:text="You're doing great keep it up!"
+                    android:layout_gravity="top"
+                    android:gravity="center|top"
+                    android:textSize="18sp"
+                    android:layout_weight="40"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+     <!--   <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="100"
+            android:layout_marginTop="-30dp"
+            android:orientation="vertical"
+            android:layout_weight="55">
+-->
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:weightSum="100"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="-30dp"
+                android:background="@drawable/my_shape"
+                android:orientation="vertical"
+                android:layout_weight="30">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="10">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="OVERVIEW"
+                        android:layout_gravity="start"
+                        android:gravity="start"
+                        android:textSize="12sp"
+                        android:layout_weight="5"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:weightSum="100"
+                    android:orientation="horizontal"
+                    android:layout_weight="45">
+
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5">
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_weight="30">
+
+                    <!--    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/supplements"
+                            android:layout_gravity="center"
+                            android:background="#000"
+                            />-->
+
+                        <RelativeLayout
+                            android:id="@+id/circle_progress_bar2"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="90">
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:indeterminate="false"
+                                android:max="100"
+                                android:id="@+id/supplement"
+                                android:progress="100"
+                                android:progressDrawable="@drawable/circle_progress_back" />
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:max="100"
+                                android:rotation="-90"
+                                android:id="@+id/supplement1"
+                                android:indeterminate="false"
+                                android:progressDrawable="@drawable/supplement_circle_progress_foregrnd" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+
+                                <ImageView
+
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/supplements_green"
+                                   />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center|top"
+                                    android:text="1"
+                                    android:id="@+id/sup_compliance"
+
+                                    />
+
+
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textColor="#000"
+                            android:text="Supplements"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_weight="30">
+                       <!-- <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="#000"
+                            android:src="@drawable/supplements"
+                            />-->
+
+                        <RelativeLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="90">
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:indeterminate="false"
+                                android:max="100"
+                                android:progress="100"
+                                android:progressDrawable="@drawable/circle_progress_back" />
+
+                            <ProgressBar
+
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:max="100"
+                                android:rotation="-90"
+                                android:id="@+id/workout"
+                                android:indeterminate="false"
+                                android:progressDrawable="@drawable/workout_circle_progress_foregrnd" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+
+                                <ImageView
+
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:gravity="center"
+                                    android:src="@drawable/workoutsgrn"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:id="@+id/work_compliance"
+
+                                    />
+
+
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textColor="#000"
+                            android:text="Workouts"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_weight="30">
+                      <!--  <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/supplements"
+                            android:layout_gravity="center"
+                            android:background="#000"
+                            />-->
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="90">
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:indeterminate="false"
+                                android:max="100"
+                                android:progress="100"
+                                android:progressDrawable="@drawable/circle_progress_back" />
+
+                            <ProgressBar
+                                android:id="@+id/lifestyle"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:max="100"
+                                android:rotation="-90"
+                                android:indeterminate="false"
+                                android:progressDrawable="@drawable/lifestylr_circle_progress_foregrnd" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+
+                                <ImageView
+
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:gravity="center"
+                                    android:src="@drawable/health"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:id="@+id/life_compliance"
+
+                                    />
+
+
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textColor="#000"
+                            android:text="Lifestyle"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5">
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    android:layout_weight="45">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:gravity="end"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="50dp"
+                        android:layout_weight="50">
+                       <!-- <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="#000"
+                            android:layout_marginBottom="5dp"
+                            android:src="@drawable/supplements"
+                            />-->
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="90">
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:indeterminate="false"
+                                android:max="100"
+                                android:progress="100"
+                                android:progressDrawable="@drawable/circle_progress_back" />
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:max="100"
+                                android:rotation="-90"
+                                android:id="@+id/foodanddrink"
+                                android:indeterminate="false"
+                                android:progressDrawable="@drawable/foodanddrinks_circle_progress_foregrnd" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+
+                                <ImageView
+
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:gravity="center"
+                                    android:src="@drawable/foodanddrinks"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:id="@+id/food_compliance"
+
+                                    />
+
+
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textColor="#000"
+                            android:text="Food &amp; Drink"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start"
+                        android:gravity="start"
+                        android:orientation="vertical"
+                        android:layout_marginRight="50dp"
+                        android:layout_weight="50">
+                       <!-- <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/supplements"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:background="#000"
+                            />-->
+                        <RelativeLayout
+                           android:layout_gravity="end"
+                            android:gravity="end"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="90">
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:indeterminate="false"
+                                android:max="100"
+                                android:progress="100"
+                                android:progressDrawable="@drawable/circle_progress_back" />
+
+                            <ProgressBar
+
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:max="100"
+                                android:rotation="-90"
+                                android:indeterminate="false"
+                                android:id="@+id/others"
+                                android:progressDrawable="@drawable/others_circle_progress_foregrnd" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+
+                                <ImageView
+
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:gravity="center"
+                                    android:src="@drawable/others"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:id="@+id/other_compliance"
+                                   />
+
+
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textColor="#000"
+                            android:text="Others"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="100"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/my_shape"
+                android:orientation="vertical"
+                android:layout_weight="27">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="14"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="10dp"
+                    android:text="COMPLIANCE"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:weightSum="100"
+                    android:orientation="horizontal"
+                    android:layout_weight="86">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:gravity="end"
+                        android:layout_weight="45">
+                        <!--<ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="#000"
+                            android:src="@drawable/supplements"
+                            />-->
+                        <RelativeLayout
+                            android:id="@+id/compliance_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:indeterminate="false"
+                                android:max="100"
+                                android:progress="100"
+                                android:progressDrawable="@drawable/circle_progress_background" />
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:max="100"
+                                android:rotation="-90"
+                                android:id="@+id/thisweek"
+                                android:indeterminate="false"
+                                android:progressDrawable="@drawable/circle_progress_foreground" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:textSize="30sp"
+                                    android:id="@+id/this_week_compliance"
+                                    />
+
+                               <!-- <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:textSize="@dimen/twelve_sp"
+                                    android:text="Treatments to Date"
+                                    android:paddingBottom="@dimen/ten_dp"
+                                    android:textColor="@color/text_gray" />
+-->
+                                <TextView
+                                    android:id="@+id/compliance"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="This Week "
+                                    android:textColor="@color/light_gray" />
+<!--
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="to Date"
+                                    android:textColor="@color/text_gray" />
+-->
+
+
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10">
+
+                        <ImageView
+                            android:background="@drawable/arrowupgrn"
+                            android:layout_gravity="center"
+                            android:layout_height="30dp"
+                            android:layout_width="30dp"
+                            android:layout_marginBottom="20dp"
+                            android:id="@+id/arrowup"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start"
+                        android:gravity="start"
+                        android:layout_weight="45">
+                        <RelativeLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:indeterminate="false"
+                                android:max="100"
+                                android:progress="100"
+                                android:progressDrawable="@drawable/circle_progress_background" />
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:max="100"
+                                android:rotation="-90"
+                                android:id="@+id/lastweek"
+                                android:indeterminate="false"
+                                android:progressDrawable="@drawable/lastweek_circle_progress_foreground" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:textSize="30sp"
+                                    android:id="@+id/last_week_compliance"
+                                    />
+
+                              <!--  <TextView
+                                    android:id="@+id/compliance_observed_compliance"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:textSize="@dimen/twelve_sp"
+                                    android:text="Treatments to Date"
+                                    android:paddingBottom="@dimen/ten_dp"
+                                    android:textColor="@color/text_gray" />
+-->
+                                <TextView
+                                    android:id="@+id/compliance_observed_compliance1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+
+                                    android:text="Last Week "
+                                    android:textColor="@color/light_gray" />
+
+                              <!--  <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="to Date"
+                                    android:textColor="@color/text_gray" />
+-->
+
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+     <!--   </LinearLayout>
+-->
+    </LinearLayout>
+
+
+
+</RelativeLayout>

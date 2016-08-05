@@ -1,0 +1,17 @@
+<resources>>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/transparent_black</item>
+        <item name="android:statusBarColor">@color/transparent_black</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>//translucent
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+
+
+    </style>
+
+    <style name="Theme.TransparencyDemo" parent="@android:style/Theme.Holo.Light" />
+</resources>

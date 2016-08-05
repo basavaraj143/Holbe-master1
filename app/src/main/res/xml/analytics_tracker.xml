@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ga_trackingId"> UA-77735518-1</string>
+    <bool name="ga_reportUncaughtExceptions">true</bool>
+    <bool name="ga_autoActivityTracking">true</bool>
+    <screenName name="com.appsriv.holbe.DrawerActivity">Treatment screen</screenName>
+    <screenName name="com.appsriv.holbe.DrashBoardActivity">Dashboard Screen</screenName>
+    <screenName name="com.appsriv.holbe.activities.ProfileActivity">Profile Screen</screenName>
+    <screenName name="com.appsriv.holbe.activities.SettingActivity">Setting Screen</screenName>
+</resources>

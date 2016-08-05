@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Holbe</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_comping_up">CompingUP</string>
+    <string name="title_activity_tab">Tab</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_circle">Circle</string>
+
+    <string name="curved_text_value">In/Out Facility</string>
+    <string name="home_screen_observations">OBSERVATIONS</string>
+    <string name="total_observations">2375</string>
+    <string name="percent_value">65%</string>
+    <string name="home_screen_observed_compliance">OBSERVED\nCOMPLIANCE</string>
+    <string name="content_description">This is an image…</string>
+    <string name="title_activity_over_view">OverView</string>
+    <string name="title_activity_treatment">Treatment</string>
+    <string name="title_activity_drash_board">DrashBoard</string>
+    <string name="title_activity_tab_profile">TabProfileActivity</string>
+    <string name="title_activity_your_treatment">YourTreatment</string>
+    <string name="title_activity_drawer">DrawerActivity</string>
+    <string name="title_activity_setting">Setting</string>
+    <string name="title_activity_image_upload">ImageUpload</string>
+
+
+    <string name="btnTakePicture">Capture Image</string>
+    <string name="btnRecordVideo">Record Video</string>
+    <string name="or">(or)</string>
+    <string name="btnUploadToServer">Upload to Server</string>
+
+</resources>
