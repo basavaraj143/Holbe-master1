@@ -41,7 +41,7 @@ public class CustomComingUpListAdapter extends BaseAdapter
     ArrayList<Group> list;
     int groupPosition;
     int childPosition;
-    TextView type,reps;
+    TextView type,reps,supplement_mapping_id,timing_id;
     ImageView []complete = new ImageView[1000];
     ImageView []partial = new ImageView[1000];
     String num=null;
@@ -62,27 +62,30 @@ public class CustomComingUpListAdapter extends BaseAdapter
         {
 
             size =  list.get(groupPosition).getSup_Items().size();
+           // size=1;
         }
         else if ((groupPosition%5)==1)
         {
             size = list.get(groupPosition).getItems().get(childPosition).getWorkout_name1().size();
+            //size=1;
         }
         else if ((groupPosition%5)==2)
         {
             size = list.get(groupPosition).getLife_Items().size();
+            //size=1;
 
         }
         else if ((groupPosition%5)==3)
         {
             size = list.get(groupPosition).getFood_Items().size();
+            //size=1;
         }
         else if ((groupPosition%5)==4)
         {
             size = list.get(groupPosition).getOther_Items().size();
+            //size=1;
 
         }
-
-
         return size;
 
     }
@@ -99,7 +102,7 @@ public class CustomComingUpListAdapter extends BaseAdapter
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
+    public View getView(final int position, View convertView, ViewGroup parent)
     {
 
         LinearLayout layout=null;
@@ -111,6 +114,8 @@ public class CustomComingUpListAdapter extends BaseAdapter
                 convertView = inflater.inflate(R.layout.latest_coming_list_items, null);
                 type = (TextView) convertView.findViewById(R.id.type);
                 reps = (TextView) convertView.findViewById(R.id.reps);
+                supplement_mapping_id = (TextView)convertView.findViewById(R.id.supplement_mapping_id);
+                timing_id = (TextView)convertView.findViewById(R.id.timing_id);
                 layout = (LinearLayout) convertView.findViewById(R.id.layout);
             }
             else
@@ -121,13 +126,8 @@ public class CustomComingUpListAdapter extends BaseAdapter
                 layout = (LinearLayout) convertView.findViewById(R.id.layout);
                 complete[position]=(ImageView)convertView.findViewById(R.id.completed);
                 partial[position]=(ImageView)convertView.findViewById(R.id.partial);
-                /*completed[position].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(activity,"completed ",Toast.LENGTH_LONG).show();
-                    }
-                });
-*/
+                supplement_mapping_id = (TextView)convertView.findViewById(R.id.supplement_mapping_id);
+                timing_id = (TextView)convertView.findViewById(R.id.timing_id);
 
 
                 complete[position].setOnClickListener(new View.OnClickListener()
@@ -140,18 +140,18 @@ public class CustomComingUpListAdapter extends BaseAdapter
                         {
 
                             final String URL = "http://192.185.26.69/~holbe/api/patient/updatecompliancenew.php";/*?id=" + list.get(groupPosition).getOther_Items().get(childPosition).getTimings_id() + "&completion=1";*/
-                            volleypost(URL, list.get(groupPosition).getOther_Items().get(childPosition).getTimings_id(), "1");
+                            volleypost(URL, list.get(groupPosition).getSup_Items().get(childPosition).getTimings_id(), "1");
                         }
                         else if ((groupPosition%5)==2)
                         {
                             final String URL = "http://192.185.26.69/~holbe/api/patient/updatecompliancenew.php";/*?id=" + list.get(groupPosition).getOther_Items().get(childPosition).getTimings_id() + "&completion=1";*/
-                            volleypost(URL, list.get(groupPosition).getOther_Items().get(childPosition).getTimings_id(), "1");
+                            volleypost(URL, list.get(groupPosition).getLife_Items().get(childPosition).getTimings_id(), "1");
 
                         }
                         else if (groupPosition==3)
                         {
                             final String URL = "http://192.185.26.69/~holbe/api/patient/updatecompliancenew.php";/*?id=" + list.get(groupPosition).getOther_Items().get(childPosition).getTimings_id() + "&completion=1";*/
-                            volleypost(URL, list.get(groupPosition).getOther_Items().get(childPosition).getTimings_id(), "1");
+                            volleypost(URL, list.get(groupPosition).getFood_Items().get(childPosition).getTimings_id(), "1");
                         }
                         else if ((groupPosition%5)==4)
                         {
@@ -170,7 +170,7 @@ public class CustomComingUpListAdapter extends BaseAdapter
                         {
 
                             final String URL = "http://192.185.26.69/~holbe/api/patient/updatecompliancenew.php";/*?id=" + list.get(groupPosition).getOther_Items().get(childPosition).getTimings_id() + "&completion=1";*/
-                            volleypost(URL, list.get(groupPosition).getOther_Items().get(childPosition).getTimings_id(), "0.5");
+                            volleypost(URL, list.get(groupPosition).getSup_Items().get(childPosition).getTimings_id(), "0.5");
                         }
                         else if ((groupPosition%5)==2)
                         {
@@ -196,13 +196,17 @@ public class CustomComingUpListAdapter extends BaseAdapter
             if ((groupPosition%5)==0)
             {
                 type.setText(list.get(groupPosition).getSup_Items().get(childPosition).getSupplement_name());
-                reps.setText(list.get(groupPosition).getSup_Items().get(childPosition).getDosage_main_name());
+                reps.setText(list.get(groupPosition).getSup_Items().get(childPosition).getForm_main_name());
+                supplement_mapping_id.setText(list.get(groupPosition).getSup_Items().get(childPosition).getSupplement_mapping_id()+" childPos " +childPosition);
+                timing_id.setText(list.get(groupPosition).getSup_Items().get(childPosition).getTimings_id()+" childPos " +childPosition);
             }
             else if ((groupPosition%5)==1)
             {
                 layout.setVisibility(View.GONE);
                 type.setText(list.get(groupPosition).getItems().get(childPosition).getWorkout_name1().get(position));
                 reps.setText(list.get(groupPosition).getItems().get(childPosition).getSets1().get(position) +" Set of "+list.get(groupPosition).getItems().get(childPosition).getReps1().get(position)+" ");
+                supplement_mapping_id.setText(list.get(groupPosition).getItems().get(childPosition).getReps1().get(position)+" childPos " +childPosition);
+                //timing_id.setText(list.get(groupPosition).getSup_Items().get(childPosition).getTimings_id()+" childPos " +childPosition);
             }
             else if ((groupPosition%5)==2)
             {

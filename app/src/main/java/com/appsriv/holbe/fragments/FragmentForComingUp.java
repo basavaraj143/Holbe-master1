@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.DatePicker;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
@@ -78,7 +77,7 @@ public class FragmentForComingUp extends Fragment implements FragmentCommunicato
     private ViewPager viewPager;
     String workout_count, supplement_count, lifestyle_count, food_count, others_count;
     View view;
-    ExpandableListView ExpList;
+    public  ExpandableListView ExpList;
     ExpandListAdapterForComingUp comingUpListview;
     int preLast;
     public static String formattedDate;
@@ -99,10 +98,9 @@ public class FragmentForComingUp extends Fragment implements FragmentCommunicato
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         view = inflater.inflate(R.layout.fragment_latest_comingup, container, false);
-
         masterlist=new ArrayList<>();
         c = Calendar.getInstance();
         Util.dateList.clear();
@@ -110,23 +108,17 @@ public class FragmentForComingUp extends Fragment implements FragmentCommunicato
         month = c.get(Calendar.MONTH);
         day = c.get(Calendar.DAY_OF_MONTH);
         df = new SimpleDateFormat("yyyy-MM-dd");
-
         formattedDate = df.format(c.getTime());
         currentdate=formattedDate;
         Log.d("date",formattedDate);
         ExpList = (ExpandableListView) view.findViewById(R.id.exp_list);
         ExpList.setFastScrollEnabled(true);
         ExpList.setFastScrollAlwaysVisible(true);
-        URL = "http://192.185.26.69/~holbe/api/patient/test/get_coming_up.php?id=1&dateid="+currentdate;
+        URL="http://192.185.26.69/~holbe/api/patient/test/get_coming_up.php?id="+Login.details.get("userId")+"&dateid="+currentdate;
+        Util.current_Date = currentdate;
         Util.date=currentdate;
         Util.dateList.add(currentdate);
-        if (Util.flag) {
-            new AsyncHttpTask().execute(URL);
-        }
-
-        Log.i("check" ,"In oncreateview " +masterlist.toString());
-        Log.i("check" ,"In oncreateview DATE " +currentdate);
-
+        new AsyncHttpTask().execute(URL);
         ExpList.setOnScrollListener(new AbsListView.OnScrollListener()
         {
             @Override
@@ -141,7 +133,6 @@ public class FragmentForComingUp extends Fragment implements FragmentCommunicato
                 final int lastItem = firstVisibleItem + visibleItemCount;
                 if(lastItem == totalItemCount)
                 {
-
                     if(preLast!=lastItem){ //to avoid multiple calls for last item
                         preLast = lastItem;
                         try
@@ -153,21 +144,126 @@ public class FragmentForComingUp extends Fragment implements FragmentCommunicato
                         }
                         c.add(Calendar.DATE, 1);  // number of days to add
                         currentdate= df.format(c.getTime());  //  is now the new date
-
-                        URL="http://192.185.26.69/~holbe/api/patient/test/get_coming_up.php?id=1&dateid="+currentdate;
+                        URL="http://192.185.26.69/~holbe/api/patient/test/get_coming_up.php?id="+Login.details.get("userId")+"&dateid="+currentdate;
                         Log.i("check" ,"In AsysncTask cal in on Scroll " +currentdate);
                         Util.date=currentdate;
                         Util.dateList.add(currentdate);
-                        if (Util.flag) {
+                        if (Util.flag)
+                        {
                             new AsyncHttpTask().execute(URL);
-                            Log.i("check" ,"In AsysncTask cal in on Scroll " +masterlist.toString());
                         }
-                        //ExpList.setSelectedGroup(totalItemCount);
                     }
                 }
             }
         });
+        int position = LatestComingUp.tabLayout.getSelectedTabPosition();
 
+        Log.i("tabPos", "pos " + position);
+
+        if (ExpList != null)
+        {
+            if (position == 0)
+            {
+                ExpList.setSelectedGroup(position);
+            } else if (position == 1)
+            {
+                ExpList.setSelectedGroup(position);
+
+            } else if (position == 2)
+            {
+                ExpList.setSelectedGroup(position);
+            } else if (position == 3)
+            {
+                ExpList.setSelectedGroup(position);
+            } else if (position == 4)
+            {
+                ExpList.setSelectedGroup(position);
+            }
+        }
+       /* LatestComingUp.tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener()
+        {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab)
+            {
+                if (ExpList!=null)
+                {
+                    int position = tab.getPosition();
+
+                    Log.i("tabPos", "pos " + position);
+
+                    if (ExpList != null) {
+                        if (position == 0) {
+                           ExpList.setSelectedGroup(position);
+                        } else if (position == 1) {
+                            ExpList.setSelectedGroup(position);
+
+                        } else if (position == 2) {
+                            ExpList.setSelectedGroup(position);
+                        } else if (position == 3) {
+                            ExpList.setSelectedGroup(position);
+                        } else if (position == 4) {
+                            ExpList.setSelectedGroup(position);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab)
+            {
+                *//*if (ExpList!=null)
+                {
+                    int position = tab.getPosition();
+
+                    Log.i("tabPos", "pos " + position);
+
+                    if (ExpList != null)
+                    {
+                        if (position == 0)
+                        {
+                            ExpList.setSelectedGroup(position);
+                        } else if (position == 1)
+                        {
+                           ExpList.setSelectedGroup(position);
+
+                        } else if (position == 2)
+                        {
+                            ExpList.setSelectedGroup(position);
+                        } else if (position == 3)
+                        {
+                           ExpList.setSelectedGroup(position);
+                        } else if (position == 4)
+                        {
+                           ExpList.setSelectedGroup(position);
+                        }
+                    }
+                }*//*
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                Log.i("tabPos" ,"pos " +position);
+
+                if (ExpList!=null)
+                {
+                    if (position == 0)
+                    {
+                       ExpList.setSelectedGroup(position);
+
+                    } else if (position == 1) {
+                       ExpList.setSelectedGroup(position);
+
+                    } else if (position == 2) {
+                       ExpList.setSelectedGroup(position);
+                    } else if (position == 3) {
+                       ExpList.setSelectedGroup(position);
+                    } else if (position == 4) {
+                       ExpList.setSelectedGroup(position);
+                    }
+                }
+            }
+        });*/
         return view;
     }
 
@@ -186,13 +282,16 @@ public class FragmentForComingUp extends Fragment implements FragmentCommunicato
         URL = "http://192.185.26.69/~holbe/api/patient/test/get_coming_up.php?id="+ Login.details.get("userId")+"&dateid="+Date;
         new CalenderClickTask().execute(URL);
         //sendRequest(URL);
-        Log.i("check" ,"In passDataToFragment " +masterlist.toString());
+      //  Log.i("check" ,"In passDataToFragment " +masterlist.toString());
     }
 
 
     @Override
-    public void onStart() {
+    public void onStart()
+    {
         super.onStart();
+
+
 
     }
 
@@ -216,15 +315,15 @@ public class FragmentForComingUp extends Fragment implements FragmentCommunicato
                                 String dayOfTheWeek = sdf.format(d);
                                 String data = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
                                 //Log.d("data " ,"date " +data);
-                                URL = "http://192.185.26.69/~holbe/api/patient/test/get_coming_up.php?id=1&dateid="+year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                                URL = "http://192.185.26.69/~holbe/api/patient/test/get_coming_up.php?id="+ Login.details.get("userId")+"&dateid="+year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
                                 Util.date=currentdate;
                                 Util.dateList.add(currentdate);
                                 masterlist.clear();
                                 if (Util.flag) {
-                                    new AsyncHttpTask().execute(URL);
+                                    new CalenderClickTask().execute(URL);
                                 }
-                                Log.i("check" ,"In onDateSet " +masterlist.toString());
-                                Log.i("check" ,"In onDateSet DATE  " +year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                             //   Log.i("check" ,"In onDateSet " +masterlist.toString());
+                             //   Log.i("check" ,"In onDateSet DATE  " +year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
                                 //new CalenderClickTask().execute(URL);
                             }
                         }, year, month, day);
@@ -234,22 +333,6 @@ public class FragmentForComingUp extends Fragment implements FragmentCommunicato
 
     }
 
-    public void series()
-    {
-        int n = 10;
-        for(int i =1; i<n;i++)
-        {
-            if (i%2==0)
-            {
-                System.out.print(i+2);
-            }
-            else
-            {
-                System.out.print(i);
-            }
-
-        }
-    }
 
     @Override
     public void onTaskCompleted()
@@ -328,6 +411,8 @@ public class FragmentForComingUp extends Fragment implements FragmentCommunicato
 
             /* Download complete. Lets update UI */
             masterlist.clear();
+            masterlist = resultlist;
+            comingUpListview.notifyDataSetChanged();
             Log.i("check" ,"In Calender Task  " +masterlist.toString());
             Log.i("check" ,"In Calender Task result list " +resultlist.toString());
             Util.flag = true;
@@ -342,21 +427,26 @@ public class FragmentForComingUp extends Fragment implements FragmentCommunicato
                 LatestComingUp.top3.setText(food_count);
                 LatestComingUp.top4.setText(others_count);
                 // overalll_compliance.setText("" + str_overalll_compliance + "%");
-                items = new String[]{"Supplement", "Workout", "Lifestyle", "Food & Drink", "Others"};
-                time = new String[]{"1:30 PM", "3:45 PM", "5:15 PM", "6:30 PM", "8:00 PM"};
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        typeExc = new String[]{"SITUPS", "AVACADO SHAKE", "VITAMIN C", "VITAMIN A", "VITAMIN D"};
+                        comingUpListview = new ExpandListAdapterForComingUp(getActivity(), items, time, background, typeExc, background, lineColour, masterlist,  ExpList);
+                        ExpList.setAdapter(comingUpListview);
+                        ExpList.setVisibility(View.INVISIBLE);
+                        comingUpListview.notifyDataSetChanged();
+                        for (int i =0; i<masterlist.size(); i++)
+                        {
+                            for (int j =0; j<masterlist.get(i).getItems().size(); j++)
+                            {
+                               // Log.i("check" ,"Resuml for supplement name " +resultlist.get(i).getSup_Items().get(j).getSupplement_name());
+                               // Log.i("check" ,"Resuml for lifestyle name " +resultlist.get(i).getLife_Items().get(j).getLifestyle_name());
+                            }
+                        }
 
-                lineColour = new String[]{"#ABD14B", "#3CC3AF", "#1AA2DF", "#AA68B4", "#BD345E"};
+                    }
+                });
 
-                flag = new int[]{R.drawable.supplements, R.drawable.workouts, R.drawable.lifestyles, R.drawable.foodadndrink,
-                        R.drawable.others};
-                background = new int[]{R.drawable.circle_suppliments, R.drawable.circle_workout, R.drawable.circle_heart, R.drawable.circlefoodanddrink,
-                        R.drawable.circle_others};
-                ExpList.setAdapter((BaseExpandableListAdapter)null);
-                comingUpListview.notifyDataSetInvalidated();
-                typeExc = new String[]{"SITUPS", "AVACADO SHAKE", "VITAMIN C", "VITAMIN A", "VITAMIN D"};
-                ExpandListAdapterForComingUp comingUpListview = new ExpandListAdapterForComingUp(getActivity(), items, time, background, typeExc, background, lineColour, resultlist,  ExpList);
-                ExpList.setAdapter(comingUpListview);
-                comingUpListview.notifyDataSetChanged();
 
             } else
             {
@@ -459,10 +549,13 @@ public class FragmentForComingUp extends Fragment implements FragmentCommunicato
                 Log.i("check" ,masterlist.toString());
                 comingUpListview = new ExpandListAdapterForComingUp(getActivity(), items, time, background, typeExc, background, lineColour, masterlist,  ExpList);
                 ExpList.setAdapter(comingUpListview);
+
+
                 if (comingUpListview!=null)
                 {
                     comingUpListview.notifyDataSetChanged();
                 }
+
 
             } else
             {
@@ -605,8 +698,10 @@ public class FragmentForComingUp extends Fragment implements FragmentCommunicato
                     Supplement supp = null;
                     sup_list.clear();
                     JSONArray supplement = object.getJSONArray("supplement");
-                    for (int x = 0; x < supplement.length(); x++) {
+                    for (int x = 0; x < supplement.length(); x++)
+                    {
                         supp = new Supplement();
+
                         supp.setTime(supplement.getJSONObject(x).getString("time"));
                         supp.setTimings_id(supplement.getJSONObject(x).getString("timings_id"));
                         supp.setSupplement_mapping_id(supplement.getJSONObject(x).getString("supplement_mapping_id"));
@@ -622,6 +717,23 @@ public class FragmentForComingUp extends Fragment implements FragmentCommunicato
                         supp.setCriteria_main_name(supplement.getJSONObject(x).getString("criteria_main_name"));
                         supp.setForm_main_name(supplement.getJSONObject(x).getString("form_main_name"));
                         supp.setDosage_main_name(supplement.getJSONObject(x).getString("dosage_main_name"));
+/*
+                        supp.getTime1().add(supplement.getJSONObject(x).getString("time"));
+                        supp.getTimings_id1().add((supplement.getJSONObject(x).getString("timings_id")));
+                        supp.getSupplement_mapping_id1().add(supplement.getJSONObject(x).getString("supplement_mapping_id"));
+                        supp.getSupplement_name1().add(supplement.getJSONObject(x).getString("supplement_name"));
+                        supp.getAmoun1t().add(supplement.getJSONObject(x).getString("amount"));
+                        supp.getGap1().add(supplement.getJSONObject(x).getString("gap"));
+                        supp.getRepitition1().add(supplement.getJSONObject(x).getString("repitition"));
+                        supp.getCompliance1().add(supplement.getJSONObject(x).getString("compliance") + "%");
+                        supp.getWhen_time1().add(supplement.getJSONObject(x).getString("when_time"));
+                        supp.getCompliance1().add(supplement.getJSONObject(x).getString("compliance"));
+                        supp.getFreequency1().add(supplement.getJSONObject(x).getString("frequency"));
+                        supp.getType1().add(supplement.getJSONObject(x).getString("type"));
+                        supp.getCriteria_main_name1().add(supplement.getJSONObject(x).getString("criteria_main_name"));
+                        supp.getForm_main_name1().add(supplement.getJSONObject(x).getString("form_main_name"));
+                        supp.getDosage_main_name1().add(supplement.getJSONObject(x).getString("dosage_main_name"));*/
+
                         supp.setProgressBarRes(progressBarRes[j]);
                         supp.setColour(lineColour[j]);
                         sup_list.add(supp);

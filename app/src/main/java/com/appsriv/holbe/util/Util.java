@@ -10,4 +10,5 @@ public class Util
     public static String date="";
     public static ArrayList<String> dateList = new ArrayList<>();
     public static boolean flag = true;
+    public static String current_Date="";
 }

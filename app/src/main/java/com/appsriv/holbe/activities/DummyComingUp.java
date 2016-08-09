@@ -41,9 +41,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class LatestComingUp extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener , ActivityCommunicator
+public class DummyComingUp extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener , ActivityCommunicator
 {
-    public static TabLayout tabLayout;
+    private TabLayout tabLayout;
     private ExpandListAdapter ExpAdapter;
     private ArrayList<Group> ExpListItems;
     private ExpandableListView ExpandList;
@@ -93,7 +93,6 @@ public class LatestComingUp extends AppCompatActivity implements NavigationView.
         month = c.get(Calendar.MONTH);
         day = c.get(Calendar.DAY_OF_MONTH);
 
-        reloadFragment();
         fragmentForComingUp = new FragmentForComingUp();
 
        // fragmentCommunicator = (FragmentCommunicator)getBaseContext();
@@ -107,9 +106,7 @@ public class LatestComingUp extends AppCompatActivity implements NavigationView.
         formattedDate = df.format(c.getTime());
 
         String ct = DateFormat.getDateInstance().format(new Date());
-
-
-        // date.setText(formattedDate);
+       // date.setText(formattedDate);
 
 
         //date picker when we click on date
@@ -202,23 +199,20 @@ public class LatestComingUp extends AppCompatActivity implements NavigationView.
         }
     }
 
+
     @Override
     protected void onResume()
     {
         super.onResume();
         mTracker.setScreenName("Treatment Screen ");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
-
     }
 
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
         super.onStart();
         mTracker.setScreenName("Treatment Screen ");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
-
-
     }
 
 
@@ -253,15 +247,15 @@ public class LatestComingUp extends AppCompatActivity implements NavigationView.
 
         if (id == R.id.overview)
         {
-           startActivity(new Intent(LatestComingUp.this,DashBordActivity.class));
+           startActivity(new Intent(DummyComingUp.this,DashBordActivity.class));
 
         } else if (id == R.id.mytreatment)
         {
-            startActivity(new Intent(LatestComingUp.this,LatestComingUp.class));
+            startActivity(new Intent(DummyComingUp.this,DummyComingUp.class));
 
         } else if (id == R.id.profile)
         {
-            startActivity(new Intent(LatestComingUp.this,ProfileActivity.class));
+            startActivity(new Intent(DummyComingUp.this,ProfileActivity.class));
 
         }
         else if (id == R.id.comingup)
@@ -271,11 +265,11 @@ public class LatestComingUp extends AppCompatActivity implements NavigationView.
 
         else if (id == R.id.setting)
         {
-            startActivity(new Intent(LatestComingUp.this,SettingActivity.class));
+            startActivity(new Intent(DummyComingUp.this,SettingActivity.class));
 
         } else if (id == R.id.logout)
         {
-            startActivity(new Intent(LatestComingUp.this,Splash.class));
+            startActivity(new Intent(DummyComingUp.this,Splash.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -338,8 +332,7 @@ public class LatestComingUp extends AppCompatActivity implements NavigationView.
             return mFragmentTitleList.get(position);
         }
         @Override
-        public int getItemPosition(Object object)
-        {
+        public int getItemPosition(Object object) {
             // POSITION_NONE makes it possible to reload the PagerAdapter
             return POSITION_NONE;
         }
@@ -349,7 +342,7 @@ public class LatestComingUp extends AppCompatActivity implements NavigationView.
 
     private void setupTabIcons() {
 
-        View layoutInflater = LayoutInflater.from(LatestComingUp.this).inflate(R.layout.custom_tab_layout,null);
+        View layoutInflater = LayoutInflater.from(DummyComingUp.this).inflate(R.layout.custom_tab_layout,null);
         top = (TextView)layoutInflater.findViewById(R.id.top);
         TextView bottom = (TextView)layoutInflater.findViewById(R.id.bottom);
         ImageView icon =(ImageView)layoutInflater.findViewById(R.id.icon);
@@ -360,7 +353,7 @@ public class LatestComingUp extends AppCompatActivity implements NavigationView.
         layoutInflater.setBackgroundColor(Color.parseColor("#ABD14B"));
         tabLayout.getTabAt(0).setCustomView(layoutInflater);
 
-        View layoutInflater1 =LayoutInflater.from(LatestComingUp.this).inflate(R.layout.custom_tab_layout,null);
+        View layoutInflater1 =LayoutInflater.from(DummyComingUp.this).inflate(R.layout.custom_tab_layout,null);
         top1 = (TextView)layoutInflater1.findViewById(R.id.top);
         TextView bottom1 = (TextView)layoutInflater1.findViewById(R.id.bottom);
         ImageView icon1 =(ImageView)layoutInflater1.findViewById(R.id.icon);
@@ -372,7 +365,7 @@ public class LatestComingUp extends AppCompatActivity implements NavigationView.
         layoutInflater1.setBackgroundColor(Color.parseColor("#3CC3AF"));
         tabLayout.getTabAt(1).setCustomView(layoutInflater1);
 
-        View layoutInflater2 =LayoutInflater.from(LatestComingUp.this).inflate(R.layout.custom_tab_layout,null);
+        View layoutInflater2 =LayoutInflater.from(DummyComingUp.this).inflate(R.layout.custom_tab_layout,null);
         top2 = (TextView)layoutInflater2.findViewById(R.id.top);
         TextView bottom2 = (TextView)layoutInflater2.findViewById(R.id.bottom);
         ImageView icon2 =(ImageView)layoutInflater2.findViewById(R.id.icon);
@@ -384,7 +377,7 @@ public class LatestComingUp extends AppCompatActivity implements NavigationView.
         layoutInflater2.setBackgroundColor(Color.parseColor("#1AA2DF"));
         tabLayout.getTabAt(2).setCustomView(layoutInflater2);
 
-        View layoutInflater3 =LayoutInflater.from(LatestComingUp.this).inflate(R.layout.custom_tab_layout,null);
+        View layoutInflater3 =LayoutInflater.from(DummyComingUp.this).inflate(R.layout.custom_tab_layout,null);
         top3 = (TextView)layoutInflater3.findViewById(R.id.top);
         TextView bottom3 = (TextView)layoutInflater3.findViewById(R.id.bottom);
         ImageView icon3 =(ImageView)layoutInflater3.findViewById(R.id.icon);
@@ -396,7 +389,7 @@ public class LatestComingUp extends AppCompatActivity implements NavigationView.
         layoutInflater3.setBackgroundColor(Color.parseColor("#AA68B4"));
         tabLayout.getTabAt(3).setCustomView(layoutInflater3);
 
-        View layoutInflater4 =LayoutInflater.from(LatestComingUp.this).inflate(R.layout.custom_tab_layout,null);
+        View layoutInflater4 =LayoutInflater.from(DummyComingUp.this).inflate(R.layout.custom_tab_layout,null);
         top4 = (TextView)layoutInflater4.findViewById(R.id.top);
         TextView bottom4 = (TextView)layoutInflater4.findViewById(R.id.bottom);
         ImageView icon4 =(ImageView)layoutInflater4.findViewById(R.id.icon);

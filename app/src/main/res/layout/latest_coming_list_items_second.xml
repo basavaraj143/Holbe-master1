@@ -71,13 +71,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:textColor="#000"/>
+            android:textColor="#000"
+            android:id="@+id/supplement_mapping_id"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#000"/>
+            android:textColor="#000"
+            android:id="@+id/timing_id"/>
     </LinearLayout>
     </LinearLayout>
 

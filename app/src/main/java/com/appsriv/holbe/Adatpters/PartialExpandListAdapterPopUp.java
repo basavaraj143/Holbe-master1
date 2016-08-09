@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
@@ -67,7 +70,13 @@ public class PartialExpandListAdapterPopUp extends BaseExpandableListAdapter imp
     int listCount;
     NumberPicker np;
     String num=null;
+    EditText situpvalue;
+    ArrayList<String> countList = null;
+    public static HashMap<String,ArrayList<String>>  arrayList = new HashMap<String,ArrayList<String>>();
 
+    public static HashMap<String,String>  arrayListfinal = new HashMap<String,String>();
+
+    public static ArrayList<String>  popUp_list = new ArrayList<>();
     public PartialExpandListAdapterPopUp(Activity activity, String[] Items, String[] time, int [] icons, String[] excName, int [] background, String [] lineColour, ArrayList<Group> list,
                                          int groupPostion, int childPostion, ExpandableListView expandableListView , int listCount) {
         this.expandableListView = expandableListView;
@@ -82,12 +91,23 @@ public class PartialExpandListAdapterPopUp extends BaseExpandableListAdapter imp
         this.groupPostion1 = groupPostion;
         this.childPostion1 = childPostion;
         this.listCount = listCount;
+        arrayList = new HashMap<String,ArrayList<String>>();
+        arrayListfinal = new HashMap<String,String>();
+       /* for (int i=0; i<groups.get(groupPostion1).getItems().get(childPostion1).getWorkout_name1().size();i++) {
+            countList = new ArrayList<>();
+            for (int j = 0; j <Integer.parseInt(groups.get(groupPostion1).getItems().get(childPostion1).getSets1().get(j)); j++)
+            {
 
+                arrayListfinal.put(String.valueOf(i) + String.valueOf(j), "000");
+            }
+        }
+*/
     }
 
 
     @Override
-    public Object[] getSections() {
+    public Object[] getSections()
+    {
         return new Object[0];
     }
 
@@ -127,7 +147,8 @@ public class PartialExpandListAdapterPopUp extends BaseExpandableListAdapter imp
     }
 
     @Override
-    public int getChildrenCount(int groupPosition) {
+    public int getChildrenCount(int groupPosition)
+    {
    /*     int size = 0;
 
 
@@ -210,30 +231,76 @@ public class PartialExpandListAdapterPopUp extends BaseExpandableListAdapter imp
     @Override
     public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, final ViewGroup parent)
     {
-        if (convertView==null) {
+        if (convertView==null)
+        {
 
             LayoutInflater infalInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.situp_layout, null);
         }
+
+        Log.i("finallist","final list " +arrayListfinal.get(String.valueOf(groupPosition)+String.valueOf(childPosition)));
         TextView set = (TextView)convertView.findViewById(R.id.set);
         set.setText("SET "+(childPosition+1));
-       /* np = (NumberPicker) convertView.findViewById(R.id.numberPicker1);
-        np.setMinValue(0);
-        np.setMaxValue(10);
-        np.setWrapSelectorWheel(false);
-        np.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        situpvalue = (EditText)convertView.findViewById(R.id.situpvalue);
+        if (arrayListfinal.get(String.valueOf(groupPosition) + String.valueOf(childPosition))!=null)
+        {
+            situpvalue.setText(arrayListfinal.get(String.valueOf(groupPosition) + String.valueOf(childPosition)));
 
-        np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+        }
+        else
+        {
+            situpvalue.setText("0");
+        }
+        situpvalue.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
+
+
+            }
 
             @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal)
+            public void beforeTextChanged(CharSequence s, int start, int count, int after)
             {
-                num = String.valueOf(newVal);
+
             }
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                countList = new ArrayList<String>();
+                if(groupPosition==0)
+                {
+                    countList.add(s.toString());
+                    arrayListfinal.put(String.valueOf(groupPosition)+String.valueOf(childPosition),s.toString());
+                }
+                else if(groupPosition==1)
+                {
+                    countList.add(s.toString());
+                    arrayListfinal.put(String.valueOf(groupPosition)+String.valueOf(childPosition),s.toString());
+                }
+                else if(groupPosition==2)
+                {
+                    countList.add(s.toString());
+                    arrayListfinal.put(String.valueOf(groupPosition)+String.valueOf(childPosition),s.toString());
+                }
+                else if(groupPosition==3)
+                {
+                    countList.add(s.toString());
+                    arrayListfinal.put(String.valueOf(groupPosition)+String.valueOf(childPosition),s.toString());
+                }
+                else if(groupPosition==4)
+                {
+                    countList.add(s.toString());
+                    arrayListfinal.put(String.valueOf(groupPosition)+String.valueOf(childPosition),s.toString());
+                }
+
+            }
+
         });
 
 
-*/
         return convertView;
     }
 

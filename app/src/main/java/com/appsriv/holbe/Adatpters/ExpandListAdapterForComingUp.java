@@ -37,6 +37,7 @@ import com.appsriv.holbe.models.Others;
 import com.appsriv.holbe.models.Supplement;
 import com.appsriv.holbe.models.Treatment;
 import com.appsriv.holbe.models.Workout;
+import com.appsriv.holbe.util.Util;
 import com.appsriv.holbe.volley.VolleySingleton;
 
 import org.json.JSONException;
@@ -74,6 +75,7 @@ public class ExpandListAdapterForComingUp extends BaseExpandableListAdapter impl
     AlertDialog b;
     NumberPicker np;
     String num=null;
+    CustomComingUpListAdapter comingUpListAdapter;
     public ExpandListAdapterForComingUp(Activity activity, String[] Items, String[] time, int [] icons, String[] excName, int [] background, String [] lineColour, ArrayList<Group> list,
                                         ExpandableListView expandableListView) {
         this.expandableListView = expandableListView;
@@ -163,13 +165,14 @@ public class ExpandListAdapterForComingUp extends BaseExpandableListAdapter impl
             ArrayList<Others> chList = groups.get(groupPosition).getOther_Items();
             size = chList.size();
         }
-        if (groupPosition%5==1)
+       /* if (groupPosition%5==1)
         {
             return groups.get(groupPosition).getItems().size();
         }
         else {
             return 1;
-        }
+        }*/
+        return size;
     }
 
     @Override
@@ -225,6 +228,8 @@ public class ExpandListAdapterForComingUp extends BaseExpandableListAdapter impl
     @Override
     public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, final ViewGroup parent)
     {
+
+        Log.i("check","cheild position "+childPosition+" group position " +groupPosition);
         Workout workout=null;
         Supplement supplement=null;
         LifeStyle style=null;
@@ -236,31 +241,36 @@ public class ExpandListAdapterForComingUp extends BaseExpandableListAdapter impl
          if ((groupPosition%5)==0)
         {
             //supplement = (Supplement) getChild1(groupPosition,childPosition);
-            size =  groups.get(groupPosition).getSup_Items().size();
+           // size =  groups.get(groupPosition).getSup_Items().size();
+            size =1;
 
         }
         else if ((groupPosition%5)==1)
         {
             //workout = (Workout) getChild(groupPosition, childPosition);
             size = groups.get(groupPosition).getItems().get(childPosition).getWorkout_name1().size();
+            //size =1;
 
         }
         else if ((groupPosition%5)==2)
         {
             //style = (LifeStyle) getChild2(groupPosition,childPosition);
-            size = groups.get(groupPosition).getLife_Items().size();
+            //size = groups.get(groupPosition).getLife_Items().size();
+            size =1;
 
         }
         else if ((groupPosition%5)==3)
         {
           //  food = (Food)getChild3(groupPosition,childPosition);
-            size = groups.get(groupPosition).getFood_Items().size();
+            //size = groups.get(groupPosition).getFood_Items().size();
+            size =1;
         }
         else if ((groupPosition%5) == 4)
         {
 
                 //others = (Others) getChild4(groupPosition, childPosition);
-                size = groups.get(groupPosition).getOther_Items().size();
+                //size = groups.get(groupPosition).getOther_Items().size();
+            size =1;
 
         }
 
@@ -283,7 +293,12 @@ public class ExpandListAdapterForComingUp extends BaseExpandableListAdapter impl
                 }
                 int pixels=(int) (point*density)/72;
                 ListView listView = (ListView)convertView.findViewById(R.id.list);
-                listView.setAdapter(new CustomComingUpListAdapter((Activity) context,groups,groupPosition,childPosition));
+               // comingUpListAdapter= new CustomComingUpListAdapter((Activity) context,groups,groupPosition,childPosition);
+                listView.setAdapter( new CustomComingUpListAdapter((Activity) context,groups,groupPosition,childPosition));
+                /*if (comingUpListAdapter!=null)
+                {
+                    comingUpListAdapter.notifyDataSetChanged();
+                }*/
                 listView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, pixels));
                 listView.requestLayout();
             }
@@ -296,12 +311,18 @@ public class ExpandListAdapterForComingUp extends BaseExpandableListAdapter impl
                 if (groupPosition%5 == 1)
                 {
                     point = 43 * size;
-                } else {
+                } else
+                {
                     point = 20 * size;
                 }
                 int pixels = (int) (point * density) / 72;
                 ListView listView = (ListView) convertView.findViewById(R.id.list);
-                listView.setAdapter(new CustomComingUpListAdapter((Activity) context, groups, groupPosition, childPosition));
+               // comingUpListAdapter= new CustomComingUpListAdapter((Activity) context,groups,groupPosition,childPosition);
+                listView.setAdapter(new CustomComingUpListAdapter((Activity) context,groups,groupPosition,childPosition));
+               /* if (comingUpListAdapter!=null)
+                {
+                    comingUpListAdapter.notifyDataSetChanged();
+                }*/
                 listView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, pixels));
                 listView.requestLayout();
                 complete[groupPosition] = (ImageView) convertView.findViewById(R.id.completed);
@@ -338,8 +359,13 @@ public class ExpandListAdapterForComingUp extends BaseExpandableListAdapter impl
                 point = 70* size;
             }
             int pixels=(int) (point*density)/72;
+           // comingUpListAdapter= new CustomComingUpListAdapter((Activity) context,groups,groupPosition,childPosition);
             ListView listView = (ListView)convertView.findViewById(R.id.list);
             listView.setAdapter(new CustomComingUpListAdapter((Activity) context,groups,groupPosition,childPosition));
+           /* if (comingUpListAdapter!=null)
+            {
+                comingUpListAdapter.notifyDataSetChanged();
+            }*/
             listView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, pixels));
             listView.requestLayout();
         }
@@ -347,9 +373,9 @@ public class ExpandListAdapterForComingUp extends BaseExpandableListAdapter impl
 
         return convertView;
     }
-    public void showChangeLangDialog(int groupPosition , int childPosition) {
+    public void showChangeLangDialog(final int groupPosition , final int childPosition)
+    {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
-
         LayoutInflater infalInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         final View dialogView = infalInflater.inflate(R.layout.partial_layout, null);
         dialogBuilder.setView(dialogView);
@@ -373,7 +399,13 @@ public class ExpandListAdapterForComingUp extends BaseExpandableListAdapter impl
         {
             public void onClick(DialogInterface dialog, int whichButton)
             {
+                Log.i("list","values are "+PartialExpandListAdapterPopUp.arrayList.get("00"));
+                Log.i("list","values are "+PartialExpandListAdapterPopUp.arrayList.get("01"));
+                Log.i("list","values are "+PartialExpandListAdapterPopUp.arrayList.get("02"));
 
+                Log.i("list","values are 1st"+PartialExpandListAdapterPopUp.arrayList.get("10"));
+                Log.i("list","values are 1st"+PartialExpandListAdapterPopUp.arrayList.get("11"));
+                Log.i("list","values are 1st "+PartialExpandListAdapterPopUp.arrayList.get("12"));
             }
         });
         dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -481,6 +513,8 @@ public class ExpandListAdapterForComingUp extends BaseExpandableListAdapter impl
     @Override
     public View getGroupView(final int groupPosition, boolean isExpanded, View convertView, ViewGroup parent)
     {
+        ExpandableListView mExpandableListView = (ExpandableListView) parent;
+        mExpandableListView.expandGroup(groupPosition);
        if (convertView == null)
        {
             LayoutInflater inf = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -490,14 +524,20 @@ public class ExpandListAdapterForComingUp extends BaseExpandableListAdapter impl
         if (groupPosition%5==0)
         {
             date.setVisibility(View.VISIBLE);
-            date.setText(groups.get(groupPosition).getDate());
+            if (Util.current_Date.equalsIgnoreCase(groups.get(groupPosition).getDate()))
+            {
+                date.setText("TODAY");
+
+            }
+            else {
+                date.setText(groups.get(groupPosition).getDate());
+            }
         }
         else
         {
             date.setVisibility(View.GONE);
         }
-        ExpandableListView mExpandableListView = (ExpandableListView) parent;
-        mExpandableListView.expandGroup(groupPosition);
+
         ImageView icon = (ImageView)convertView.findViewById(R.id.icon);
         icon.setBackgroundResource(background[groupPosition%5]);
         TextView type = (TextView)convertView.findViewById(R.id.type);
